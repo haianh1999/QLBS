@@ -1,0 +1,43 @@
+﻿@model QLBS.Models.Sach
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sach</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TheLoais.MaTheLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TheLoais.MaTheLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaSach)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDSach }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
