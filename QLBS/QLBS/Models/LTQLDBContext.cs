@@ -11,7 +11,7 @@ namespace QLBS.Models
             : base("name=LTQLDBContext")
         {
         }
-
+        public virtual DbSet<TacGia> TacGias { get; set; }
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Sach>  Sachs { get; set; }

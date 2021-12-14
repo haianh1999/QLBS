@@ -10,112 +10,107 @@ using QLBS.Models;
 
 namespace QLBS.Areas.Admin.Controllers
 {
-    public class SachesController : Controller
+    public class TacGiasAdminController : Controller
     {
         private LTQLDBContext db = new LTQLDBContext();
 
-        // GET: Admin/Saches
+        // GET: Admin/TacGiasAdmin
         public ActionResult Index()
         {
-            var sachs = db.Sachs.Include(s => s.TheLoais);
-            return View(sachs.ToList());
+            return View(db.TacGias.ToList());
         }
 
-        // GET: Admin/Saches/Details/5
-        public ActionResult Details(string id)
+        // GET: Admin/TacGiasAdmin/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sach sach = db.Sachs.Find(id);
-            if (sach == null)
+            TacGia tacGia = db.TacGias.Find(id);
+            if (tacGia == null)
             {
                 return HttpNotFound();
             }
-            return View(sach);
+            return View(tacGia);
         }
 
-        // GET: Admin/Saches/Create
+        // GET: Admin/TacGiasAdmin/Create
         public ActionResult Create()
         {
-            ViewBag.MaTheLoai = new SelectList(db.TheLoais, "MaTheLoai", "MaTheLoai");
             return View();
         }
 
-        // POST: Admin/Saches/Create
+        // POST: Admin/TacGiasAdmin/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDSach,TenSach,GiaSach,MaTheLoai")] Sach sach)
+        public ActionResult Create([Bind(Include = "MaTacGia,TenTacGia")] TacGia tacGia)
         {
             if (ModelState.IsValid)
             {
-                db.Sachs.Add(sach);
+                db.TacGias.Add(tacGia);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaTheLoai = new SelectList(db.TheLoais, "MaTheLoai", "MaTheLoai", sach.MaTheLoai);
-            return View(sach);
+            return View(tacGia);
         }
 
-        // GET: Admin/Saches/Edit/5
-        public ActionResult Edit(string id)
+        // GET: Admin/TacGiasAdmin/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sach sach = db.Sachs.Find(id);
-            if (sach == null)
+            TacGia tacGia = db.TacGias.Find(id);
+            if (tacGia == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaTheLoai = new SelectList(db.TheLoais, "MaTheLoai", "MaTheLoai", sach.MaTheLoai);
-            return View(sach);
+            return View(tacGia);
         }
 
-        // POST: Admin/Saches/Edit/5
+        // POST: Admin/TacGiasAdmin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDSach,TenSach,GiaSach,MaTheLoai")] Sach sach)
+        public ActionResult Edit([Bind(Include = "MaTacGia,TenTacGia")] TacGia tacGia)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sach).State = EntityState.Modified;
+                db.Entry(tacGia).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaTheLoai = new SelectList(db.TheLoais, "MaTheLoai", "MaTheLoai", sach.MaTheLoai);
-            return View(sach);
+            return View(tacGia);
         }
 
-        // GET: Admin/Saches/Delete/5
-        public ActionResult Delete(string id)
+        // GET: Admin/TacGiasAdmin/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sach sach = db.Sachs.Find(id);
-            if (sach == null)
+            TacGia tacGia = db.TacGias.Find(id);
+            if (tacGia == null)
             {
                 return HttpNotFound();
             }
-            return View(sach);
+            return View(tacGia);
         }
 
-        // POST: Admin/Saches/Delete/5
+        // POST: Admin/TacGiasAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Sach sach = db.Sachs.Find(id);
-            db.Sachs.Remove(sach);
+            TacGia tacGia = db.TacGias.Find(id);
+            db.TacGias.Remove(tacGia);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

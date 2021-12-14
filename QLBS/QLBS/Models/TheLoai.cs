@@ -10,7 +10,7 @@ namespace QLBS.Models
     {
         [Key]
         public int MaTheLoai { get; set; }
-        public int TenTheLoai { get; set; }
+        public string TenTheLoai { get; set; }
         public ICollection<Sach> sachs { get; set; }
     }
 }

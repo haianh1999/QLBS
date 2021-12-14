@@ -16,6 +16,8 @@ namespace QLBS.Models
         public int MaTheLoai { get; set; }
         [ForeignKey("MaTheLoai")]
         public virtual TheLoai  TheLoais { get; set; }
-
+        public int MaTacGia { get; set; }
+        [ForeignKey("MaTacGia")]
+        public virtual TacGia TacGias { get; set; }
     }
 }

@@ -130,8 +130,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SachesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TheLoaisController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SachsAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TacGiasAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TheLoaisAdminController.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
@@ -149,6 +150,14 @@
     <Compile Include="Migrations\202112140853014_create_acc.cs" />
     <Compile Include="Migrations\202112140853014_create_acc.Designer.cs">
       <DependentUpon>202112140853014_create_acc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112140924458_check.cs" />
+    <Compile Include="Migrations\202112140924458_check.Designer.cs">
+      <DependentUpon>202112140924458_check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112140950576_check1.cs" />
+    <Compile Include="Migrations\202112140950576_check1.Designer.cs">
+      <DependentUpon>202112140950576_check1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\UserRoleProvider.cs" />
@@ -178,16 +187,21 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\HomeAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Saches\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Saches\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Saches\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Saches\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Saches\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\TheLoais\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\TheLoais\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\TheLoais\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\TheLoais\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\TheLoais\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TacGiasAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TacGiasAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TacGiasAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TacGiasAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TacGiasAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SachsAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SachsAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SachsAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SachsAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SachsAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoaisAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoaisAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoaisAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoaisAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoaisAdmin\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -247,6 +261,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112140853014_create_acc.resx">
       <DependentUpon>202112140853014_create_acc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112140924458_check.resx">
+      <DependentUpon>202112140924458_check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112140950576_check1.resx">
+      <DependentUpon>202112140950576_check1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

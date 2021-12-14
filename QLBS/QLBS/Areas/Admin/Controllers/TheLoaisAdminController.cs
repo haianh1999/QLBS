@@ -10,17 +10,17 @@ using QLBS.Models;
 
 namespace QLBS.Areas.Admin.Controllers
 {
-    public class TheLoaisController : Controller
+    public class TheLoaisAdminController : Controller
     {
         private LTQLDBContext db = new LTQLDBContext();
 
-        // GET: Admin/TheLoais
+        // GET: Admin/TheLoaisAdmin
         public ActionResult Index()
         {
             return View(db.TheLoais.ToList());
         }
 
-        // GET: Admin/TheLoais/Details/5
+        // GET: Admin/TheLoaisAdmin/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,13 +35,13 @@ namespace QLBS.Areas.Admin.Controllers
             return View(theLoai);
         }
 
-        // GET: Admin/TheLoais/Create
+        // GET: Admin/TheLoaisAdmin/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/TheLoais/Create
+        // POST: Admin/TheLoaisAdmin/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,7 +58,7 @@ namespace QLBS.Areas.Admin.Controllers
             return View(theLoai);
         }
 
-        // GET: Admin/TheLoais/Edit/5
+        // GET: Admin/TheLoaisAdmin/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace QLBS.Areas.Admin.Controllers
             return View(theLoai);
         }
 
-        // POST: Admin/TheLoais/Edit/5
+        // POST: Admin/TheLoaisAdmin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +89,7 @@ namespace QLBS.Areas.Admin.Controllers
             return View(theLoai);
         }
 
-        // GET: Admin/TheLoais/Delete/5
+        // GET: Admin/TheLoaisAdmin/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace QLBS.Areas.Admin.Controllers
             return View(theLoai);
         }
 
-        // POST: Admin/TheLoais/Delete/5
+        // POST: Admin/TheLoaisAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -20,6 +20,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Tác Giả", "Index", "TacGiasAdmin", new { area = "Admin" }, null)</li>
+                    <li>@Html.ActionLink("Thể Loại", "Index", "TheLoaisAdmin", new { area = "Admin" }, null)</li>
+                    <li>@Html.ActionLink("Sách", "Index", "SachsAdmin", new { area = "Admin" }, null)</li>
+                    <li>@Html.ActionLink("Đăng Xuất", "Logout", "Accounts", new { area = "" }, null)</li>
                 </ul>
             </div>
         </div>
