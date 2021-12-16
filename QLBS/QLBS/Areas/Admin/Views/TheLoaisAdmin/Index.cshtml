@@ -8,8 +8,18 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm Mới", "Create")
 </p>
+
+@using (Html.BeginForm("index", "The", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        <label>Thêm File Excel</label>
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+
+        <input type="submit" value="Cập Nhật" class="btn btn-danger" />
+    </div>
+}
 <table class="table">
     <tr>
         <th>
@@ -18,17 +28,18 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenTheLoai)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaTheLoai }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaTheLoai }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaTheLoai })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTheLoai)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MaTheLoai }) |
+                @Html.ActionLink("Thông tin", "Details", new { id = item.MaTheLoai }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaTheLoai })
+            </td>
+        </tr>
+    }
 
 </table>

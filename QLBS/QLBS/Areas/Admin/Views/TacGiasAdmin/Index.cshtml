@@ -9,6 +9,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("index", "TacGiasAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+
+        <input type="submit" value="Cập Nhật" class="btn btn-danger" />
+    </div>
+}
 <table class="table">
     <tr>
         <th>
@@ -17,17 +26,18 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenTacGia)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaTacGia }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaTacGia }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaTacGia })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTacGia)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaTacGia }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaTacGia }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaTacGia })
+            </td>
+        </tr>
+    }
 
 </table>

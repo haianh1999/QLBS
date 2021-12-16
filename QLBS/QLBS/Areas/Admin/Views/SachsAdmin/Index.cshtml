@@ -8,48 +8,58 @@
 
 }
 
-<h2>Index</h2>
+<h2>Sách</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
+@using (Html.BeginForm("index", "SachsAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+
+        <input type="submit" value="Cập Nhật" class="btn btn-danger" />
+    </div>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TacGias.TenTacGia)
+            Tên tác giả
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TheLoais.TenTheLoai)
+            Tên thể loại
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TenSach)
+            Tên sách
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GiaSach)
+            Giá
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TacGias.TenTacGia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TheLoais.TenTheLoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenSach)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GiaSach)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDSach }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDSach }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDSach })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TacGias.TenTacGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheLoais.TenTheLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaSach)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.IDSach }) |
+                @Html.ActionLink("Thông tin", "Details", new { id = item.IDSach }) |
+                @Html.ActionLink("Xoá", "Delete", new { id = item.IDSach })
+            </td>
+        </tr>
+    }
 
 </table>

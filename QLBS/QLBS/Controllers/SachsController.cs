@@ -1,66 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.Entity;
-using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using QLBS.Models;
 
-namespace QLBS.Areas.Admin.Controllers
+namespace QLBS.Controllers
 {
-    public class SachsAdminController : Controller
+    public class SachsController : Controller
     {
         private LTQLDBContext db = new LTQLDBContext();
-        AutogenKey genkey = new AutogenKey();
-        ReadDataFromExcelFile excelPro = new ReadDataFromExcelFile();
 
-        // GET: Admin/SachsAdmin
+        // GET: Sachs
         public ActionResult Index()
         {
             var sachs = db.Sachs.Include(s => s.TacGias).Include(s => s.TheLoais);
             return View(sachs.ToList());
         }
 
-        [HttpPost]
-        public ActionResult Index(HttpPostedFileBase file)
-        {
-            DataTable dt = CopyDataFromExcelFile(file);
-            OverwriteFastData(dt);
-            return RedirectToAction("Index", "SachsAdmin");
-        }
-
-        public DataTable CopyDataFromExcelFile(HttpPostedFileBase file)
-        {
-            Random r = new Random();
-            string fileExtention = file.FileName.Substring(file.FileName.IndexOf("."));
-            string _FileName = "Saches" + r.Next() + fileExtention; //Tên file Excel
-            string _path = Path.Combine(Server.MapPath("~/Uploads/Excels"), _FileName);
-            file.SaveAs(_path);
-            DataTable dt = excelPro.ReadDataFromExcelFiles(_path, true);
-            return dt;
-        }
-
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LTQLDBContext"].ConnectionString);
-        private void OverwriteFastData(DataTable dt)
-        {
-            SqlBulkCopy bulkCopy = new SqlBulkCopy(con);
-            bulkCopy.DestinationTableName = "Saches";
-            bulkCopy.ColumnMappings.Add(0, "IDSach");
-            bulkCopy.ColumnMappings.Add(1, "TenSach");
-            bulkCopy.ColumnMappings.Add(2, "GiaSach");
-            bulkCopy.ColumnMappings.Add(3, "MaTheLoai");
-            bulkCopy.ColumnMappings.Add(4, "MaTacGia");
-            con.Open();
-            bulkCopy.WriteToServer(dt);
-            con.Close();
-        }
-
-        // GET: Admin/SachsAdmin/Details/5
+        // GET: Sachs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -75,27 +36,15 @@ namespace QLBS.Areas.Admin.Controllers
             return View(sach);
         }
 
-        // GET: Admin/SachsAdmin/Create
+        // GET: Sachs/Create
         public ActionResult Create()
         {
-
-            if (db.Sachs.OrderByDescending(m => m.IDSach).Count() == 0)
-            {
-                var newID = "Sach01";
-                ViewBag.newproID = newID;
-            }
-            else
-            {
-                var PdID = db.Sachs.OrderByDescending(m => m.IDSach).FirstOrDefault().IDSach;
-                var newID = genkey.generatekey(PdID, 4);
-                ViewBag.newproID = newID;
-            }
             ViewBag.MaTacGia = new SelectList(db.TacGias, "MaTacGia", "TenTacGia");
             ViewBag.MaTheLoai = new SelectList(db.TheLoais, "MaTheLoai", "TenTheLoai");
             return View();
         }
 
-        // POST: Admin/SachsAdmin/Create
+        // POST: Sachs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -114,7 +63,7 @@ namespace QLBS.Areas.Admin.Controllers
             return View(sach);
         }
 
-        // GET: Admin/SachsAdmin/Edit/5
+        // GET: Sachs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -131,7 +80,7 @@ namespace QLBS.Areas.Admin.Controllers
             return View(sach);
         }
 
-        // POST: Admin/SachsAdmin/Edit/5
+        // POST: Sachs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -149,7 +98,7 @@ namespace QLBS.Areas.Admin.Controllers
             return View(sach);
         }
 
-        // GET: Admin/SachsAdmin/Delete/5
+        // GET: Sachs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -164,7 +113,7 @@ namespace QLBS.Areas.Admin.Controllers
             return View(sach);
         }
 
-        // POST: Admin/SachsAdmin/Delete/5
+        // POST: Sachs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

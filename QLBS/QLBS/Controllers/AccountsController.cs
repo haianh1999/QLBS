@@ -56,7 +56,7 @@ namespace QLBS.Controllers
             }
             else if (CheckSession() == 2)
             {
-                return RedirectToAction("Index", "Products", new { Area = "" });
+                return RedirectToAction("Index", "Sachs", new { Area = "" });
             }
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -106,7 +106,7 @@ namespace QLBS.Controllers
                 else if (CheckSession() == 2)
 
                 {
-                    return RedirectToAction("Index", "Products", new { Area = "" });
+                    return RedirectToAction("Index", "Sachs", new { Area = "" });
                 }
 
             }
@@ -175,7 +175,7 @@ namespace QLBS.Controllers
                     db.Entry(acc).State = EntityState.Modified;
                     db.SaveChanges();
                     Response.Write("<script>alert('Data inserted successfully')</script>");
-                    return RedirectToAction("Index", "Products");
+                    return RedirectToAction("Index", "Sachs");
                 }
                 catch
                 {

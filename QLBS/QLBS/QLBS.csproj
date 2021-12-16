@@ -136,6 +136,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\SachsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -165,6 +166,7 @@
     <Compile Include="Models\Autogenkey.cs" />
     <Compile Include="Models\Encrytion.cs" />
     <Compile Include="Models\LTQLDBContext.cs" />
+    <Compile Include="Models\ReadDataFromExcelFile.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Sach.cs" />
     <Compile Include="Models\TacGia.cs" />
@@ -234,10 +236,13 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Accounts\Register.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
+    <Content Include="Views\Sachs\Index.cshtml" />
+    <Content Include="Views\Sachs\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Uploads\Excels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
