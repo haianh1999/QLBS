@@ -15,8 +15,15 @@ namespace QLBS.Controllers
         private LTQLDBContext db = new LTQLDBContext();
 
         // GET: Sachs
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            var links = from l in db.Sachs // lấy toàn bộ liên kết
+                        select l;
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                links = links.Where(s => s.TenSach.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+                return View(links);
+            }
             var sachs = db.Sachs.Include(s => s.TacGias).Include(s => s.TheLoais);
             return View(sachs.ToList());
         }

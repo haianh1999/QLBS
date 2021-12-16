@@ -21,8 +21,8 @@
                 <ul class="nav navbar-nav">
                     
                     <li>@Html.ActionLink("Trang Chủ", "Index", "Sachs")</li>
-                    <li>@Html.ActionLink("Đăng Ký", "Register", "Accounts")</li>
-                    <li>@Html.ActionLink("Đăng Nhập", "Login", "Accounts")</li>
+                    @Html.Partial("_LoginPartial")
+                    
                 </ul>
             </div>
         </div>

@@ -4,8 +4,16 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        <div class="form-group d-flex">
+            <label style="color:blue" class="control-label">Tìm Kiếm:</label>
+            <input class="form-control" name="searchString" placeholder="Nhập Tên Sách" />
+        </div>
+        <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+    </p>
+}
 
 <table class="table">
     <tr>
@@ -16,15 +24,16 @@
             Tên Thể Loại
         </th>
         <th>
-           Tên Sách
+            Tên Sách
         </th>
         <th>
-           Giá
+            Giá
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    
+    @foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.TacGias.TenTacGia)
@@ -39,9 +48,9 @@
             @Html.DisplayFor(modelItem => item.GiaSach)
         </td>
         <td>
-            @Html.ActionLink("Thông tin", "Details", new { id=item.IDSach })
+            @Html.ActionLink("Thông tin", "Details", new { id = item.IDSach })
         </td>
     </tr>
-}
+    }
 
 </table>

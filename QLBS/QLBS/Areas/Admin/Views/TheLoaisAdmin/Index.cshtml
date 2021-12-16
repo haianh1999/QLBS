@@ -5,13 +5,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Thể Loại</h2>
 
 <p>
     @Html.ActionLink("Thêm Mới", "Create")
 </p>
 
-@using (Html.BeginForm("index", "The", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("index", "TheLoaisAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div>
         <label>Thêm File Excel</label>
